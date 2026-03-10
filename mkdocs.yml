@@ -6,4 +6,6 @@ nav:
 
 plugins:
   - search
-  - gen-files
+  - gen-files:
+      scripts:
+        - tools/build_scripts_index.py
