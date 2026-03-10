@@ -1,21 +1,40 @@
-
 name: deploy
-on: { push: { branches: [ main ] } }
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write      # <-- REQUIRED to push to gh-pages
+      pages: write         # (optional; not strictly needed for gh-pages push, but harmless)
+      id-token: write      # (optional)
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with: { python-version: '3.x' }
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false   # <-- prevents inherited token from interfering
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
       - name: Install
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-      - name: Build
+
+      - name: Build site
         run: mkdocs build --clean
-      - name: Deploy
+
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./site
+          publish_branch: gh-pages    # explicit; default is also gh-pages
