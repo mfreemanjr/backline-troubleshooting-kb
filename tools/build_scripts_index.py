@@ -28,21 +28,6 @@ def summary_line(text: str) -> str:
     return m.group(1).strip() if m else ""
 
 
-rows = []
-for md in ROOT.rglob('*.md'):
-    text = md.read_text(encoding='utf-8', errors='ignore')
-    if looks_like_script(text):
-        title = first_h1(text, md.stem)
-        summary = summary_line(text)
-        tags = ""
-        tm = re.search(r'(?mi)^tags:\s*\[(.*?)\]', text)
-        if tm:
-            tags = ", ".join([t.strip() for t in tm.group(1).split(',')])
-        rel = md.relative_to(ROOT).as_posix()
-        if rel == 'scripts/index.md':
-            continue
-        rows.append((title, summary, tags, rel))
-
 rows.sort(key=lambda r: r[0].lower())
 
 out = []
@@ -53,6 +38,14 @@ out.append('')
 out.append('| Script | Summary | Tags |')
 out.append('|---|---|---|')
 for title, summary, tags, rel in rows:
-    out.append(f'| [{title}]({rel}) | {summary} | {tags} |')
+    out.append(f'| {title} | {summary} | {tags} |')
 
-mkdocs_gen_files.write('scripts/index.md', "\n".join(out) + "\n")
+# ---- write via mkdocs_gen_files.open() ----
+text = "\n".join(out) + "\n"
+out_path = "scripts/index.md"
+
+# Optional: where the "Edit this page" button should point
+mkdocs_gen_files.set_edit_path(out_path, "tools/build_scripts_index.py")
+
+with mkdocs_gen_files.open(out_path, "w") as f:
+    f.write(text)
