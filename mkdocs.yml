@@ -1,62 +1,9 @@
 site_name: PowerScale OneFS Operations Library
-site_description: PowerScale / OneFS support-grade command & operations knowledge base
-site_url: https://example.github.io/powerscale-onefs-kb
-repo_url: https://github.com/your-org/powerscale-onefs-kb
-repo_name: your-org/powerscale-onefs-kb
-copyright: © 2026 PowerScale / OneFS KB
-
-theme:
-  name: material
-  features:
-    - navigation.tabs
-    - navigation.sections
-    - navigation.indexes
-    - content.code.copy
-    - search.highlight
-  palette:
-    - scheme: default
-      primary: blue
-      accent: light blue
-    - scheme: slate
-      primary: blue
-      accent: light blue
-  icon:
-    repo: material/source-repository
-
-markdown_extensions:
-  - admonition
-  - footnotes
-  - attr_list
-  - toc:
-      permalink: true
-  - pymdownx.details
-  - pymdownx.superfences
-  - pymdownx.highlight
-  - pymdownx.inlinehilite
-
 nav:
+  - Scripts:
+      - Script Index: scripts/index.md
   - Home: index.md
-  - Risk: Risky Commands (Read First).md
-  - Most Used: Most‑Used - Daily Cheat Sheet.md
-  - Job Engine:
-      - Core: Jobs & Job Engine (Core).md
-      - Reports / Failpoints: Job Engine - Reports DB, Failpoints & Throttling.md
-      - Busy LINs: Job Monitoring & Busy LINs.md
-  - FSAnalyze / IndexUpdate: FSAnalyze & IndexUpdate (FSA-IU).md
-  - Drives & Hardware:
-      - Drives: Drives - Health, Smartfail, Stalls & Boot Flash.md
-      - Hardware: Hardware - Nodes - Inventory - Boot.md
-  - Networking:
-      - Ethernet / Capture: Networking (Ethernet) & Packet Capture.md
-      - Internal Net / IB: Internal Network - Infiniband & RBM.md
-  - Locking & Perf: Locking, Vnodes & Performance Signals.md
-  - Logs: Logs & Elvis Logsets.md
-  - Cores / Savecore: Cores, Panics, Savecore, Hangdumps.md
-  - Quotas & Snapshots: Quotas & Snapshots.md
-  - CloudPools: CloudPools.md
-  - Auth: Auth - IIQ - SMB - NFS.md
-  - Scripts: Scripting, Parsers & One-liners.md
-  - Utilities: Conversions & Utilities.md
-  - Elvis Quick Commands: Elvis Quick Commands Cheats.md
-  - Troubleshooting: Troubleshooting Playbooks.md
-  - Version Matrix: Version Matrix (7.x → 9.7).md
+
+plugins:
+  - search
+  - gen-files
