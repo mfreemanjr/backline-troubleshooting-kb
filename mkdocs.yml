@@ -1,8 +1,25 @@
 site_name: PowerScale OneFS Operations Library
+
 nav:
   - Scripts:
       - Script Index: scripts/index.md
   - Home: index.md
+
+theme:
+  name: material
+  features:
+    - search.highlight
+    - navigation.tabs
+    - navigation.sections
+
+markdown_extensions:
+  - admonition
+  - footnotes
+  - toc:
+      permalink: true
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
 
 plugins:
   - search
