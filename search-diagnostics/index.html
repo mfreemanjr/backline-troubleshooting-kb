@@ -9,8 +9,10 @@
       
       
       
+        <link rel="prev" href="../scripts/">
       
-        <link rel="next" href="../search-diagnostics/">
+      
+        <link rel="next" href="..">
       
       
         
@@ -21,7 +23,7 @@
     
     
       
-        <title>Script Index - PowerScale OneFS Operations Library</title>
+        <title>Search Diagnostics - PowerScale OneFS Operations Library</title>
       
     
     
@@ -62,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#script-index" class="md-skip">
+        <a href="#ensure-docs-directory-exists-it-should" class="md-skip">
           Skip to content
         </a>
       
@@ -96,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Script Index
+              Search Diagnostics
             
           </span>
         </div>
@@ -167,13 +169,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../scripts/" class="md-tabs__link">
           
   
   
@@ -189,9 +189,11 @@
   
   
   
+    
   
-    <li class="md-tabs__item">
-      <a href="../search-diagnostics/" class="md-tabs__link">
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
         
   
   
@@ -260,31 +262,26 @@
       
   
   
-    
   
   
-  
     
     
     
     
-      
-        
-        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
         
           
-          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
             
   
   
@@ -302,7 +299,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -315,6 +312,41 @@
             
               
                 
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scripts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Script Index
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
   
   
     
@@ -336,42 +368,6 @@
   <span class="md-ellipsis">
     
   
-    Script Index
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../search-diagnostics/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
     Search Diagnostics
   
 
@@ -381,6 +377,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -447,31 +444,46 @@
 
 
 
-<h1 id="script-index">Script Index<a class="headerlink" href="#script-index" title="Permanent link">&para;</a></h1>
-<blockquote>
-<p>This page is generated at build time.
-To improve discoverability on a page that contains scripts, add:</p>
+<h1 id="ensure-docs-directory-exists-it-should">Ensure docs directory exists (it should)<a class="headerlink" href="#ensure-docs-directory-exists-it-should" title="Permanent link">&para;</a></h1>
+<p>New-Item -ItemType Directory -Path .\docs -Force | Out-Null</p>
+<p>@'</p>
+<h1 id="search-diagnostics">🔎 Search Diagnostics<a class="headerlink" href="#search-diagnostics" title="Permanent link">&para;</a></h1>
+<p>This page helps verify whether the Material for MkDocs search engine is functioning correctly on this site.</p>
+<hr />
+<h2 id="1-check-if-the-search-index-is-reachable">✅ 1. Check if the search index is reachable<a class="headerlink" href="#1-check-if-the-search-index-is-reachable" title="Permanent link">&para;</a></h2>
+<p>Click the link below:</p>
+<p><strong>View search_index.json</strong></p>
+<p>Expected results:
+- If it downloads or opens a large JSON blob → <strong>Good</strong>
+- If it shows 404 / Cannot load / HTML error → <strong>Search cannot work</strong></p>
+<hr />
+<h2 id="2-real-time-browser-diagnostics">✅ 2. Real-time browser diagnostics<a class="headerlink" href="#2-real-time-browser-diagnostics" title="Permanent link">&para;</a></h2>
+<p>Open your browser’s Developer Tools:
+- <strong>Chrome / Edge</strong> → F12 → “Network” tab<br />
+- Refresh the page
+- In the filter box, type: <strong>search</strong></p>
+<p>You should see requests for:</p>
 <ul>
-<li><code>tags: [script, &lt;more-tags&gt;]</code></li>
-<li><code>&gt; Summary: One sentence describing the script</code></li>
+<li><code>search_index.json</code></li>
+<li><code>search.js</code></li>
+<li><code>worker/search.worker.js</code> (depending on theme version)</li>
 </ul>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>Script</th>
-<th>Summary</th>
-<th>Tags</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+<p>If any are <strong>red / 404 / blocked</strong>, search will return zero results.</p>
+<hr />
+<h2 id="3-javascript-console-errors">✅ 3. JavaScript console errors<a class="headerlink" href="#3-javascript-console-errors" title="Permanent link">&para;</a></h2>
+<p>Open DevTools → “Console”.</p>
+<p>Common failure messages include:
+- <code>Failed to fetch search_index.json</code>
+- <code>Cannot read property 'config' of undefined</code>
+- <code>Uncaught ReferenceError: lunr is not defined</code>
+- <code>Failed to load resource: the server responded with a status of 404</code></p>
+<p>If you see any of these, search is broken due to missing/inaccessible JS assets.</p>
+<hr />
+<h2 id="4-verify-theme-configuration">✅ 4. Verify theme configuration<a class="headerlink" href="#4-verify-theme-configuration" title="Permanent link">&para;</a></h2>
+<p>Make sure <code>mkdocs.yml</code> includes:</p>
+<p>```yaml
+theme:
+  name: material</p>
 
 
 
