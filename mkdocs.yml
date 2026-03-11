@@ -3,6 +3,7 @@ site_name: PowerScale OneFS Operations Library
 nav:
   - Scripts:
       - Script Index: scripts/index.md
+  - Search Diagnostics: search-diagnostics.md
   - Home: index.md
 
 theme:
