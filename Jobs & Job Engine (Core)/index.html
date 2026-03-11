@@ -10,8 +10,6 @@
       
       
       
-        <link rel="next" href="../search-diagnostics/">
-      
       
         
       
@@ -21,7 +19,7 @@
     
     
       
-        <title>Script Index - PowerScale OneFS Operations Library</title>
+        <title>Jobs & Job Engine (Core) - PowerScale OneFS Operations Library</title>
       
     
     
@@ -62,7 +60,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#script-index" class="md-skip">
+        <a href="#jobs-job-engine-core" class="md-skip">
           Skip to content
         </a>
       
@@ -96,7 +94,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Script Index
+              Jobs &amp; Job Engine (Core)
             
           </span>
         </div>
@@ -167,13 +165,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../scripts/" class="md-tabs__link">
           
   
   
@@ -260,31 +256,26 @@
       
   
   
-    
   
   
-  
     
     
     
     
-      
-        
-        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
         
           
-          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
             
   
   
@@ -302,7 +293,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -317,19 +308,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../scripts/" class="md-nav__link">
         
   
   
@@ -345,7 +327,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -447,131 +428,33 @@
 
 
 
-<h1 id="script-index">Script Index<a class="headerlink" href="#script-index" title="Permanent link">&para;</a></h1>
+<h1 id="jobs-job-engine-core">Jobs &amp; Job Engine (Core)<a class="headerlink" href="#jobs-job-engine-core" title="Permanent link">&para;</a></h1>
+<p><strong>Core commands</strong>
+<div class="highlight"><pre><span></span><code>isi<span class="w"> </span>job<span class="w"> </span>list
+isi<span class="w"> </span>job<span class="w"> </span>status<span class="w"> </span>&lt;id&gt;
+isi<span class="w"> </span>job<span class="w"> </span>view<span class="w"> </span>&lt;id&gt;
+isi<span class="w"> </span>job<span class="w"> </span>start<span class="w"> </span>&lt;JobName&gt;
+isi<span class="w"> </span>job<span class="w"> </span>cancel<span class="w"> </span>&lt;JobName<span class="w"> </span>or<span class="w"> </span>--job-id&gt;
+</code></pre></div></p>
+<div class="admonition warning">
+<p class="admonition-title">⚠️ SAFETY — service disruption risk</p>
+<p>Prefer controlled restarts over hard terminations.</p>
+</div>
+<p><strong>Prefer service control (safer)</strong>
+<div class="highlight"><pre><span></span><code>isi<span class="w"> </span>services<span class="w"> </span>-a<span class="w"> </span>isi_job_d<span class="w"> </span>disable
+sleep<span class="w"> </span><span class="m">60</span>
+isi<span class="w"> </span>services<span class="w"> </span>-a<span class="w"> </span>isi_job_d<span class="w"> </span><span class="nb">enable</span>
+</code></pre></div></p>
+<p><strong>If directed by Support (last resort)</strong>
+<div class="highlight"><pre><span></span><code>isi_for_array<span class="w"> </span>-s<span class="w"> </span>killall<span class="w"> </span>-9<span class="w"> </span>isi_job_d
+</code></pre></div></p>
 <blockquote>
-<p>This page is generated at build time.
-To improve discoverability on a page that contains scripts, add:</p>
-<ul>
-<li><code>tags: [script, &lt;more-tags&gt;]</code></li>
-<li><code>&gt; Summary: One sentence describing the script</code></li>
-</ul>
+<p>After restart, verify: <code>isi_for_array ps awux | grep job_d</code></p>
+<p><strong>Version‑specific notes</strong>
+- 8.0: JE redesign (coordinator/throttling)
+- 9.0–9.2: steadier coordinator
+- 9.3+: better handling of very large snapshots &amp; CloudPools datasets</p>
 </blockquote>
-<table>
-<thead>
-<tr>
-<th>Script</th>
-<th>Summary</th>
-<th>Tags</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Auth — IIQ — SMB — NFS</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>CloudPools</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Cluster Health &amp; Status</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Conversions &amp; Utilities</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Cores, Panics, Savecore, Hangdumps</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Drives — Health, Smartfail, Stalls &amp; Boot Flash</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Events, Alerts &amp; Clearing</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>FSAnalyze &amp; IndexUpdate (FSA‑IU)</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Hardware — Nodes — Inventory — Boot</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Internal Network — Infiniband &amp; RBM</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Job Engine — Reports DB, Failpoints &amp; Throttling</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Job Monitoring &amp; Busy LINs</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Jobs &amp; Job Engine (Core)</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Locking, Vnodes &amp; Performance Signals</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Logs &amp; Elvis Logsets</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Most‑Used / Daily Cheat Sheet</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Networking (Ethernet) &amp; Packet Capture</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Quotas &amp; Snapshots</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Scripting, Parsers &amp; One‑liners</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Troubleshooting Playbooks</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Upgrades, Patches &amp; Firmware</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
 
 
 
